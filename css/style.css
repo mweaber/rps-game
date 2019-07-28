@@ -1,10 +1,10 @@
 @import url('http://fonts.googleapis.com/css?family=Roboto');
 :root {
-    --primary-color: #003699;
-    --dark-color: #333333;
+    --primary-color: #2F4F78;
+    --dark-color: #9C9C9C;
     --light-color: #f4f4f4;
-    --lose-color: #dc3545;
-    --win-color: #28a745;
+    --lose-color: #D72A31;
+    --win-color: #048444;
 }
 
 * {
@@ -16,7 +16,7 @@
 body {
     font-family: 'Roboto';
     line-height: 1.6;
-    background: #fff;
+    background: #FCF4E4;
     color: #333;
 }
 
@@ -30,7 +30,7 @@ body {
 
 .restart-btn {
     display: none;
-    background: var(--light-color);
+    background: #04E474;
     color: #333;
     padding: 0.4rem 1.3rem;
     font-size: 1rem;
@@ -38,11 +38,12 @@ body {
     outline: none;
     border: none;
     margin-bottom: 1rem;
+    border-radius: 20%;
 }
 
 .restart-btn:hover{
-    background: var(--primary-color);
-    color: #fff;
+    background: var(--dark-color);
+    /* color: #fff; */
 }
 
 .header{
@@ -52,6 +53,7 @@ body {
 
 .header h1{
     margin-bottom: 1rem;
+    text-decoration: underline;
 }
 
 .score{
@@ -79,6 +81,11 @@ body {
 
 .choice{
     cursor: pointer;
+    padding: 1rem;
+    border-width:5px;  
+    border-style:groove;
+    border-color: var(--light-color);
+    
 }
 
 .choice:hover{
