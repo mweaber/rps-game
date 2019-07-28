@@ -14,9 +14,8 @@ function play(e) {
     restart.style.display = 'inline-block';
     const playerChoice = e.target.id;
     const computerChoice = getComputerChoice();
-
     const winner = getWinner(playerChoice, computerChoice);
-    console.log(playerChoice, computerChoice, winner);
+    showWinner(winner, computerChoice);
 }
 
 // getComputerChoice
@@ -56,5 +55,58 @@ function getWinner(p, c) {
     }
 }
 
+// showWinner
+function showWinner(winner, computerChoice) {
+    if (winner === 'player') {
+        // Update Score
+        scoreboard.player++;
+        // Show modal results
+        result.innerHTML = `
+        <h1 class="text-win">You Win!</h1>
+        <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}</strong></p>       
+        `;
+    } else if (winner = 'computer') {
+        // Update Score
+        scoreboard.computer++;
+        // Show modal results
+        result.innerHTML = `
+         <h1 class="text-lose">You Lost!</h1>
+         <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}</strong></p>
+         `;
+    } else {
+        // Show modal results
+        result.innerHTML = `
+        <h1>Draw!</h1>
+        <p>Computer Chose <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)}</strong></p>
+        `;
+    }
+    // Show score
+    score.innerHTML = `
+    <p>Player: ${scoreboard.player}</p>
+    <p>Computer: ${scoreboard.computer}</p>
+    `;
+
+    modal.style.display = 'block';
+}
+
+// Clear Modal
+function clearModal(e) {
+    if (e.target == modal) {
+        modal.style.display = 'none'
+    }
+}
+
+// Restart Game
+function restartGame() {
+    scoreboard.player = 0;
+    scoreboard.computer = 0;
+    score.innerHTML= `
+    <p>Player: 0</p>
+    <p>Computer: 0</p>
+    `
+}
+
 // Event Listeners
 choices.forEach(choice => choice.addEventListener('click', play));
+window.addEventListener('click', clearModal);
+restart.addEventListener('click', restartGame);
